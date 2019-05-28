@@ -31,4 +31,4 @@ The Big Bang Theory, just a few additional rules;
 Currently the game can be run by simply opening the project in [Unity](https://unity.com/). A release build will be added soon after some final bug fixes
 
 
-![Short Demo Gif](https://i.gyazo.com/aad80fb22929ccbee9f61e7597f1334c.mp4?fbclid=IwAR2bZnnCS9g87Xe-J2_tqQ-aPyKeOanh1_GeylhWNSuXpI6B4KhfVpRCjtU.gif)
+![Short Demo Gif](https://i.gyazo.com/aad80fb22929ccbee9f61e7597f1334c.gif)
