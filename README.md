@@ -1,12 +1,12 @@
 # RPSLS
 #### Rock, Paper, Scissors Lizard, Spock
 A simple turn based combat style game
-##### by Gavin Macleod
+##### by [Gavin Macleod](https://www.gavinmacleod.co.uk)
 
 
 <hr>
 
-This is a simple game created for the [Arnold Clark](https://www.arnoldclark.com/careers/digital-product-development/hack-day) Hack Day tech test:
+This is a simple game created for the [Arnold Clark Hack Day](https://www.arnoldclark.com/careers/digital-product-development/hack-day) tech test:
 
 ##### The task
 
