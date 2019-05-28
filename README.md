@@ -1,7 +1,7 @@
 # RPSLS
 #### Rock, Paper, Scissors Lizard, Spock
 A simple turn based combat style game
-##### by [Gavin Macleod](https://www.gavinmacleod.co.uk)
+##### by [Gavin Macleod](http://www.gavinmacleod.co.uk)
 
 
 <hr>
