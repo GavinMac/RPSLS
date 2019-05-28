@@ -29,7 +29,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public GameObject ActionSelector;
     private SpriteRenderer spriteRenderer;
 
-    public bool HasLost = false;
+    public bool IsDead = false;
 
 	// Use this for initialization
 	void Start () {
@@ -77,12 +77,14 @@ public class PlayerStateMachine : MonoBehaviour {
     public void UpdateHealthBar()
     {
         HpValueText.text = currentHealth.ToString();
-        HealthBar.transform.localScale = new Vector3(Mathf.Clamp(currentHealth, 0, 1), HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
+        HealthBar.transform.localScale = new Vector2(currentHealth / maxHealth, HealthBar.transform.localScale.y);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
+            HealthBar.transform.localScale = new Vector2(0, 0);
             spriteRenderer.sprite = Sprites[5];
             currentState = TurnState.DEAD;
+            IsDead = true;
         }
     }
 

@@ -24,6 +24,7 @@ public class EnemyStateMachine : MonoBehaviour {
     public float currentHealth = 100f;
     private float DamageDone;
     private SpriteRenderer spriteRenderer;
+    public bool IsDead = false;
 
     public Image HealthBar;
     public Text HpValueText;
@@ -64,7 +65,7 @@ public class EnemyStateMachine : MonoBehaviour {
             case TurnState.ACTION:
                 break;
 
-            case TurnState.DEAD:
+            case TurnState.DEAD:            
                 Debug.Log("Enemy is Dead");
                 break;
         }
@@ -74,12 +75,14 @@ public class EnemyStateMachine : MonoBehaviour {
     public void UpdateHealthBar()
     {
         HpValueText.text = currentHealth.ToString();
-        HealthBar.transform.localScale = new Vector3(Mathf.Clamp(currentHealth, 0, 1), HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
+        HealthBar.transform.localScale = new Vector2(currentHealth / maxHealth, HealthBar.transform.localScale.y);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
+            HealthBar.transform.localScale = new Vector2(0, 0);
             spriteRenderer.sprite = Sprites[5];
             currentState = TurnState.DEAD;
+            IsDead = true;
         }
     }
 

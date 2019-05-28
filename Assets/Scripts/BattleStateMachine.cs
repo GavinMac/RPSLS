@@ -46,13 +46,13 @@ public class BattleStateMachine : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update () {  
         switch (battleState)
         {
             case BattleStates.WAIT:
                 Debug.Log("Hits wait");
                 CheckPlayerChose();
+                CheckForWinner();
                 break;
 
             case BattleStates.CHECK_ATTACKS:
@@ -63,12 +63,13 @@ public class BattleStateMachine : MonoBehaviour {
             case BattleStates.PERFORM_ACTION:
                 Debug.Log("Hits Perform Action");
                 PerformAttack();
+                CheckForWinner();
                 break;
 
             case BattleStates.END:
+                player.GetComponent<PlayerStateMachine>().ActionSelector.SetActive(false);
                 player.GetComponent<PlayerStateMachine>().enabled = false;
-                enemy.GetComponent<EnemyStateMachine>().enabled = false;
-                CheckForWinner();
+                enemy.GetComponent<EnemyStateMachine>().enabled = false;             
                 StartCoroutine(GameEnder());
                 break;
         }
@@ -117,6 +118,12 @@ public class BattleStateMachine : MonoBehaviour {
             RoundWinner = "Player";
             WinningAttack = playerAttack;
             LosingAttack = enemyAttack;
+        }
+        else if (playerAttack == enemyAttack)
+        {
+            RoundWinner = "";
+            WinningAttack = "";
+            LosingAttack = "";
         }
         //Otherwise, the enemy wins
         else
@@ -230,12 +237,12 @@ public class BattleStateMachine : MonoBehaviour {
 
     void CheckForWinner()
     {
-        if(player.GetComponent<PlayerStateMachine>().currentState == PlayerStateMachine.TurnState.DEAD)
+        if(player.GetComponent<PlayerStateMachine>().IsDead == true)
         {
             battleState = BattleStates.END;
             EndGameText.text = "You Lose!";
         }
-        else if(enemy.GetComponent<EnemyStateMachine>().currentState == EnemyStateMachine.TurnState.DEAD)
+        else if(enemy.GetComponent<EnemyStateMachine>().IsDead == true)
         {
             battleState = BattleStates.END;
             EndGameText.text = "You Win!";
