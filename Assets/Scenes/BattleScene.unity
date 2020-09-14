@@ -10587,6 +10587,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b5b15fa76aeedb4fbafee31991ad475, type: 3}
   currentState: 0
   currentHealth: 100
+  IsDead: 0
   HealthBar: {fileID: 292838716}
   HpValueText: {fileID: 1212881781}
 --- !u!212 &664246565
@@ -15636,7 +15637,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -16313,6 +16314,7 @@ MonoBehaviour:
   WinningAttack: 
   LosingAttack: 
   OutputMessage: 
+  PlayerAttack: {fileID: 0}
 --- !u!4 &1426698267
 Transform:
   m_ObjectHideFlags: 0
@@ -16640,6 +16642,7 @@ GameObject:
   - component: {fileID: 2029410057}
   - component: {fileID: 2029410056}
   - component: {fileID: 2029410058}
+  - component: {fileID: 2029410060}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16739,4 +16742,19 @@ MonoBehaviour:
   HealthBar: {fileID: 279162077}
   HpValueText: {fileID: 1097879851}
   ActionSelector: {fileID: 765565696}
-  HasLost: 0
+  IsDead: 0
+--- !u!111 &2029410060
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029410055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3b51f8b5df39fe147a044a668f7e6530, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

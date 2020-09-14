@@ -25,6 +25,11 @@ public class BattleStateMachine : MonoBehaviour {
         SceneManager.LoadScene(0);    
     }
 
+    private IEnumerator Waiter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
     public BattleStates battleState;
     public Text EndGameText;
 
@@ -40,9 +45,13 @@ public class BattleStateMachine : MonoBehaviour {
 
     public string OutputMessage;
 
+    //public Animation PlayerAttack;
+
 	// Use this for initialization
 	void Start () {
+        enemy.GetComponent<EnemyStateMachine>().currentState = EnemyStateMachine.TurnState.WAITING;
         battleState = BattleStates.WAIT;
+        //PlayerAttack = player.GetComponent<Animation>();
 	}
 	
 	// Update is called once per frame
@@ -165,6 +174,7 @@ public class BattleStateMachine : MonoBehaviour {
     //Attack the enemy with a given damage
     void AttackEnemy(float dmgToDeal)
     {
+        player.GetComponent<Animation>().Play();
         //Deal damage to the enemy
         float currHp = enemy.GetComponent<EnemyStateMachine>().currentHealth;
         float newHp = currHp - dmgToDeal;
